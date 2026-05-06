@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alor Dhara Society (ADHASO)</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Exo+2:wght@300;400;600;700;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root {
+  --black: #050a14;
+  --dark: #0a1628;
+  --darker: #060d1a;
+  --blue: #0057ff;
+  --blue-dark: #003dbf;
+  --blue-mid: #0043cc;
+  --neon: #00c8ff;
+  --neon2: #00ffcc;
+  --neon3: #4dffb4;
+  --white: #f0f6ff;
+  --white2: #cce0ff;
+  --gray: #8aaccc;
+  --glow: 0 0 8px #00c8ff88, 0 0 24px #0057ff44;
+  --glow2: 0 0 12px #00ffcc66, 0 0 32px #00c8ff33;
+  --card-bg: rgba(0,30,80,0.55);
+  --border: 1px solid rgba(0,200,255,0.18);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--black);
+  color:var(--white);
+  font-family:'Exo 2',sans-serif;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:var(--darker);}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:3px;}
+
+/* ===== BACKGROUND GRID ===== */
+body::before{
+  content:'';position:fixed;inset:0;
+  background:
+    linear-gradient(rgba(0,87,255,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,87,255,0.03) 1px,transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;z-index:0;
+}
+
+/* ===== HEADER / NAVBAR ===== */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(5,10,20,0.92);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(0,200,255,0.18);
+  box-shadow:0 2px 30px rgba(0,87,255,0.18);
+}
+.header-top{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 24px;gap:12px;flex-wrap:wrap;
+}
+.logo{
+  display:flex;align-items:center;gap:12px;text-decoration:none;
+}
+.logo-icon{
+  width:52px;height:52px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--neon));
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Orbitron',sans-serif;font-weight:900;font-size:18px;
+  color:#fff;box-shadow:var(--glow);
+  position:relative;overflow:hidden;
+}
+.logo-icon::after{
+  content:'';position:absolute;inset:-1px;
+  background:linear-gradient(135deg,transparent 40%,rgba(255,255,255,0.2));
+  border-radius:50%;
+}
+.logo-text h1{
+  font-family:'Orbitron',sans-serif;font-size:16px;font-weight:900;
+  background:linear-gradient(90deg,var(--neon),var(--blue),var(--neon2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:1px;
+}
+.logo-text span{font-size:11px;color:var(--gray);letter-spacing:2px;}
+
+/* SEARCH BAR */
+.search-bar{
+  display:flex;align-items:center;
+  background:rgba(0,50,120,0.3);
+  border:var(--border);border-radius:24px;
+  padding:6px 14px;gap:8px;flex:1;max-width:320px;
+}
+.search-bar input{
+  background:transparent;border:none;outline:none;
+  color:var(--white);font-family:'Exo 2',sans-serif;font-size:13px;width:100%;
+}
+.search-bar input::placeholder{color:var(--gray);}
+.search-btn{
+  background:var(--blue);border:none;border-radius:50%;
+  width:28px;height:28px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;font-size:12px;transition:.2s;flex-shrink:0;
+}
+.search-btn:hover{background:var(--neon);color:var(--black);}
+
+/* TOP RIGHT BUTTONS */
+.top-btns{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.btn-neon{
+  padding:7px 16px;border-radius:20px;font-size:12px;font-weight:700;
+  font-family:'Rajdhani',sans-serif;letter-spacing:1px;cursor:pointer;
+  border:1.5px solid var(--neon);color:var(--neon);background:transparent;
+  transition:.3s;text-transform:uppercase;text-decoration:none;
+  box-shadow:0 0 8px rgba(0,200,255,0.2);
+}
+.btn-neon:hover{background:var(--neon);color:var(--black);box-shadow:var(--glow);}
+.btn-solid{
+  padding:7px 16px;border-radius:20px;font-size:12px;font-weight:700;
+  font-family:'Rajdhani',sans-serif;letter-spacing:1px;cursor:pointer;
+  border:1.5px solid var(--blue);color:#fff;
+  background:linear-gradient(135deg,var(--blue),var(--blue-dark));
+  transition:.3s;text-transform:uppercase;text-decoration:none;
+}
+.btn-solid:hover{transform:translateY(-2px);box-shadow:var(--glow);}
+.btn-donate{
+  padding:7px 18px;border-radius:20px;font-size:12px;font-weight:800;
+  font-family:'Rajdhani',sans-serif;letter-spacing:1px;cursor:pointer;
+  border:none;color:var(--black);
+  background:linear-gradient(90deg,var(--neon2),var(--neon));
+  transition:.3s;text-transform:uppercase;
+  box-shadow:0 0 12px rgba(0,255,204,0.4);
+}
+.btn-donate:hover{transform:translateY(-2px);box-shadow:var(--glow2);}
+
+/* NAV */
+nav{
+  display:flex;align-items:center;gap:0;
+  padding:0 24px;border-top:1px solid rgba(0,200,255,0.08);
+  overflow-x:auto;
+}
+.nav-item{position:relative;}
+.nav-link{
+  display:flex;align-items:center;gap:5px;padding:10px 14px;
+  color:var(--white2);font-size:13px;font-weight:600;
+  font-family:'Rajdhani',sans-serif;letter-spacing:.5px;
+  text-decoration:none;cursor:pointer;transition:.2s;white-space:nowrap;
+  border-bottom:2px solid transparent;
+  background:none;border-top:none;border-left:none;border-right:none;
+}
+.nav-link:hover,.nav-link.active{color:var(--neon);border-bottom-color:var(--neon);}
+.nav-link i{font-size:10px;}
+
+/* DROPDOWN */
+.dropdown{
+  position:absolute;top:100%;left:0;min-width:200px;
+  background:rgba(5,15,40,0.97);
+  border:var(--border);border-radius:10px;
+  box-shadow:0 8px 32px rgba(0,87,255,0.3);
+  opacity:0;pointer-events:none;transform:translateY(-8px);
+  transition:.2s;z-index:999;
+}
+.nav-item:hover>.dropdown{opacity:1;pointer-events:all;transform:translateY(0);}
+.dropdown a,.dropdown .sub-trigger{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:9px 16px;color:var(--white2);font-size:13px;
+  font-family:'Rajdhani',sans-serif;font-weight:600;
+  text-decoration:none;transition:.15s;cursor:pointer;white-space:nowrap;
+}
+.dropdown a:hover,.dropdown .sub-trigger:hover{background:rgba(0,87,255,0.2);color:var(--neon);}
+.dropdown a:first-child,.dropdown .sub-trigger:first-child{border-radius:10px 10px 0 0;}
+.dropdown a:last-child{border-radius:0 0 10px 10px;}
+.sub-dropdown{
+  position:absolute;left:100%;top:0;min-width:200px;
+  background:rgba(5,15,40,0.97);border:var(--border);border-radius:10px;
+  box-shadow:0 8px 32px rgba(0,87,255,0.3);
+  opacity:0;pointer-events:none;transform:translateX(-8px);transition:.2s;
+}
+.sub-item:hover>.sub-dropdown{opacity:1;pointer-events:all;transform:translateX(0);}
+.sub-item{position:relative;}
+
+/* ===== HERO ===== */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;padding-top:120px;
+  background:radial-gradient(ellipse at 60% 40%,rgba(0,87,255,0.12) 0%,transparent 70%),
+             radial-gradient(ellipse at 20% 80%,rgba(0,200,255,0.07) 0%,transparent 60%);
+}
+.hero-particles{position:absolute;inset:0;pointer-events:none;}
+.particle{
+  position:absolute;border-radius:50%;
+  background:var(--neon);animation:float linear infinite;opacity:.5;
+}
+@keyframes float{
+  0%{transform:translateY(100vh) scale(0);opacity:0;}
+  10%{opacity:.5;}
+  90%{opacity:.3;}
+  100%{transform:translateY(-10vh) scale(1);opacity:0;}
+}
+.hero-content{text-align:center;position:relative;z-index:1;max-width:800px;padding:0 20px;}
+.hero-badge{
+  display:inline-block;padding:6px 20px;border-radius:20px;
+  background:rgba(0,200,255,0.1);border:var(--border);
+  color:var(--neon);font-size:12px;letter-spacing:3px;
+  text-transform:uppercase;margin-bottom:24px;font-family:'Rajdhani',sans-serif;
+}
+.hero h2{
+  font-family:'Orbitron',sans-serif;font-size:clamp(28px,6vw,64px);
+  font-weight:900;line-height:1.1;margin-bottom:16px;
+  background:linear-gradient(135deg,#fff 30%,var(--neon) 70%,var(--neon2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  text-shadow:none;
+}
+.hero p{color:var(--gray);font-size:16px;max-width:520px;margin:0 auto 32px;line-height:1.7;}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-hero{
+  padding:13px 32px;border-radius:30px;font-size:14px;font-weight:800;
+  font-family:'Rajdhani',sans-serif;letter-spacing:1.5px;cursor:pointer;
+  text-transform:uppercase;transition:.3s;text-decoration:none;border:none;
+}
+.btn-hero-primary{
+  background:linear-gradient(90deg,var(--blue),var(--neon));
+  color:#fff;box-shadow:0 0 20px rgba(0,87,255,0.5);
+}
+.btn-hero-primary:hover{transform:translateY(-3px);box-shadow:0 0 30px rgba(0,200,255,0.7);}
+.btn-hero-secondary{
+  background:transparent;color:var(--neon);
+  border:1.5px solid var(--neon);
+}
+.btn-hero-secondary:hover{background:rgba(0,200,255,0.1);transform:translateY(-3px);}
+
+/* HERO STATS */
+.hero-stats{
+  display:flex;gap:40px;justify-content:center;margin-top:48px;flex-wrap:wrap;
+}
+.stat{text-align:center;}
+.stat-num{
+  font-family:'Orbitron',sans-serif;font-size:32px;font-weight:900;
+  background:linear-gradient(90deg,var(--neon),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.stat-label{font-size:12px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-top:4px;}
+
+/* ===== SECTION STYLES ===== */
+section{padding:80px 0;position:relative;}
+.container{max-width:1200px;margin:0 auto;padding:0 24px;}
+.section-header{text-align:center;margin-bottom:48px;}
+.section-tag{
+  display:inline-block;padding:4px 16px;border-radius:12px;
+  background:rgba(0,200,255,0.1);border:var(--border);
+  color:var(--neon);font-size:11px;letter-spacing:3px;
+  text-transform:uppercase;margin-bottom:14px;font-family:'Rajdhani',sans-serif;
+}
+.section-title{
+  font-family:'Orbitron',sans-serif;font-size:clamp(22px,4vw,38px);
+  font-weight:900;
+  background:linear-gradient(90deg,var(--white),var(--neon));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:14px;
+}
+.section-sub{color:var(--gray);font-size:15px;max-width:540px;margin:0 auto;line-height:1.7;}
+
+/* ===== 3D SWIPER ===== */
+.swiper-section{background:linear-gradient(180deg,var(--black) 0%,rgba(0,20,60,0.5) 50%,var(--black) 100%);}
+.swiper-wrapper-3d{
+  perspective:1000px;display:flex;align-items:center;justify-content:center;
+  gap:0;height:360px;position:relative;overflow:hidden;
+}
+.swiper-track{
+  display:flex;align-items:center;gap:30px;
+  transition:transform .5s cubic-bezier(.4,0,.2,1);
+}
+.project-card-3d{
+  width:280px;height:320px;border-radius:18px;flex-shrink:0;
+  background:var(--card-bg);border:var(--border);
+  display:flex;flex-direction:column;overflow:hidden;
+  transition:transform .5s,box-shadow .5s,filter .5s;
+  cursor:pointer;position:relative;
+}
+.project-card-3d.active{
+  transform:scale(1.08) translateZ(40px);
+  box-shadow:0 0 40px rgba(0,200,255,0.4),0 20px 60px rgba(0,0,0,.5);
+  filter:brightness(1.1);
+}
+.project-card-3d:not(.active){
+  transform:scale(.88) translateZ(-20px);
+  filter:brightness(0.65) blur(1px);
+}
+.card-img{width:100%;height:160px;object-fit:cover;background:linear-gradient(135deg,#003,#00c8ff22);}
+.card-img-placeholder{
+  width:100%;height:160px;
+  background:linear-gradient(135deg,rgba(0,87,255,0.3),rgba(0,200,255,0.1));
+  display:flex;align-items:center;justify-content:center;
+  font-size:40px;color:var(--neon);
+}
+.card-body{padding:16px;flex:1;display:flex;flex-direction:column;gap:8px;}
+.card-year{font-size:11px;color:var(--neon);font-family:'Rajdhani',sans-serif;letter-spacing:2px;}
+.card-title{font-size:15px;font-weight:700;color:var(--white);font-family:'Rajdhani',sans-serif;}
+.card-desc{font-size:12px;color:var(--gray);flex:1;}
+.card-btn{
+  padding:6px 14px;border-radius:14px;font-size:11px;font-weight:700;
+  font-family:'Rajdhani',sans-serif;letter-spacing:1px;cursor:pointer;
+  border:1px solid var(--neon);color:var(--neon);background:transparent;
+  transition:.2s;align-self:flex-start;
+}
+.card-btn:hover{background:var(--neon);color:var(--black);}
+
+/* 3D SWIPER BUTTONS */
+.swiper-controls{display:flex;justify-content:center;gap:16px;margin-top:28px;}
+.swiper-btn-3d{
+  width:48px;height:48px;border-radius:50%;
+  background:var(--card-bg);border:var(--border);
+  color:var(--neon);cursor:pointer;font-size:18px;
+  display:flex;align-items:center;justify-content:center;
+  transition:.3s;box-shadow:0 4px 20px rgba(0,87,255,0.2);
+  transform-style:preserve-3d;
+}
+.swiper-btn-3d:hover{
+  background:var(--blue);border-color:var(--neon);
+  transform:translateY(-4px) rotateX(15deg);
+  box-shadow:0 8px 24px rgba(0,87,255,0.5),0 0 16px rgba(0,200,255,0.3);
+}
+.swiper-btn-3d:active{transform:translateY(2px) rotateX(-5deg);}
+
+/* ===== ABOUT SECTION ===== */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.about-img-wrap{position:relative;}
+.about-img-main{
+  width:100%;border-radius:18px;aspect-ratio:4/3;
+  background:linear-gradient(135deg,rgba(0,87,255,0.2),rgba(0,200,255,0.05));
+  border:var(--border);overflow:hidden;
+  display:flex;align-items:center;justify-content:center;
+  font-size:80px;color:var(--neon);position:relative;
+}
+.about-img-main::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(0,87,255,0.15),transparent);
+}
+.about-glow-dot{
+  position:absolute;width:120px;height:120px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,200,255,0.3),transparent);
+}
+.about-text h3{font-family:'Orbitron',sans-serif;font-size:24px;color:var(--white);margin-bottom:16px;}
+.about-text p{color:var(--gray);line-height:1.8;margin-bottom:16px;font-size:14px;}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;}
+.feature-item{
+  background:var(--card-bg);border:var(--border);border-radius:10px;
+  padding:12px;display:flex;align-items:center;gap:10px;
+}
+.feature-icon{color:var(--neon);font-size:18px;}
+.feature-text{font-size:12px;color:var(--white2);font-weight:600;}
+
+/* ===== PROJECT TABLES ===== */
+.projects-section{background:rgba(0,10,30,0.5);}
+.year-filter{
+  display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:32px;
+}
+.year-btn{
+  padding:6px 16px;border-radius:16px;font-size:12px;font-weight:700;
+  font-family:'Rajdhani',sans-serif;letter-spacing:1px;cursor:pointer;
+  border:1px solid rgba(0,200,255,0.3);color:var(--gray);background:transparent;
+  transition:.2s;
+}
+.year-btn:hover,.year-btn.active{
+  border-color:var(--neon);color:var(--neon);background:rgba(0,200,255,0.08);
+}
+.project-detail{
+  background:var(--card-bg);border:var(--border);border-radius:18px;
+  padding:28px;margin-top:24px;
+  transform-style:preserve-3d;
+  box-shadow:0 10px 40px rgba(0,87,255,0.15),inset 0 1px 0 rgba(255,255,255,0.05);
+  transition:.3s;
+}
+.project-detail:hover{
+  transform:translateY(-6px) rotateX(2deg);
+  box-shadow:0 20px 60px rgba(0,87,255,0.25),0 0 30px rgba(0,200,255,0.1);
+}
+.project-detail-img{
+  width:100%;height:200px;border-radius:12px;object-fit:cover;
+  background:linear-gradient(135deg,rgba(0,87,255,0.2),rgba(0,200,255,0.05));
+  display:flex;align-items:center;justify-content:center;font-size:60px;
+  margin-bottom:20px;border:var(--border);
+}
+.project-table{width:100%;border-collapse:collapse;margin-top:16px;}
+.project-table th{
+  background:rgba(0,87,255,0.2);color:var(--neon);font-family:'Rajdhani',sans-serif;
+  font-size:12px;letter-spacing:1px;padding:10px 14px;text-align:left;
+  border-bottom:1px solid rgba(0,200,255,0.2);
+}
+.project-table td{
+  padding:10px 14px;font-size:13px;color:var(--white2);
+  border-bottom:1px solid rgba(0,200,255,0.08);
+}
+.project-table tr:hover td{background:rgba(0,87,255,0.08);}
+
+/* ===== MEDIA SECTION ===== */
+.media-tabs{display:flex;gap:8px;justify-content:center;margin-bottom:32px;flex-wrap:wrap;}
+.media-tab{
+  padding:8px 20px;border-radius:20px;font-size:13px;font-weight:700;
+  font-family:'Rajdhani',sans-serif;letter-spacing:1px;cursor:pointer;
+  border:1px solid rgba(0,200,255,0.3);color:var(--gray);background:transparent;
+  transition:.2s;
+}
+.media-tab.active{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:var(--glow);}
+.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;}
+.media-card{
+  background:var(--card-bg);border:var(--border);border-radius:14px;overflow:hidden;
+  transition:.3s;cursor:pointer;
+}
+.media-card:hover{transform:translateY(-5px);box-shadow:0 12px 36px rgba(0,87,255,0.3);}
+.media-thumb{
+  width:100%;height:150px;
+  background:linear-gradient(135deg,rgba(0,87,255,0.3),rgba(0,200,255,0.1));
+  display:flex;align-items:center;justify-content:center;font-size:36px;color:var(--neon);
+  position:relative;
+}
+.media-play{
+  position:absolute;inset:0;background:rgba(0,0,0,0.3);
+  display:flex;align-items:center;justify-content:center;opacity:0;transition:.2s;
+}
+.media-card:hover .media-play{opacity:1;}
+.media-play i{font-size:40px;color:#fff;}
+.media-info{padding:12px 14px;}
+.media-info h4{font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.media-info p{font-size:11px;color:var(--gray);}
+
+/* ===== CONTACT SECTION ===== */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+.contact-info-card{
+  background:var(--card-bg);border:var(--border);border-radius:18px;
+  padding:28px;
+}
+.contact-info-card h3{
+  font-family:'Orbitron',sans-serif;font-size:20px;color:var(--neon);
+  margin-bottom:24px;
+}
+.contact-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px;}
+.contact-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:rgba(0,87,255,0.2);border:var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--neon);font-size:16px;flex-shrink:0;
+}
+.contact-detail h4{font-size:13px;font-weight:700;color:var(--white);margin-bottom:3px;}
+.contact-detail p{font-size:12px;color:var(--gray);}
+.map-btn{
+  display:flex;align-items:center;gap:10px;
+  width:100%;padding:14px 18px;border-radius:12px;
+  background:linear-gradient(90deg,rgba(0,87,255,0.2),rgba(0,200,255,0.1));
+  border:var(--border);color:var(--neon);font-size:14px;font-weight:700;
+  font-family:'Rajdhani',sans-serif;letter-spacing:1px;cursor:pointer;
+  transition:.3s;margin-top:16px;text-decoration:none;
+}
+.map-btn:hover{transform:translateY(-2px);box-shadow:var(--glow);}
+
+/* ===== SUGGESTION/DONATE ===== */
+.donate-section{
+  background:linear-gradient(180deg,rgba(0,20,60,0.5) 0%,var(--black) 100%);
+}
+.donate-form-wrap{
+  background:var(--card-bg);border:var(--border);border-radius:20px;
+  padding:36px;max-width:600px;margin:0 auto;
+  box-shadow:0 0 60px rgba(0,87,255,0.15);
+}
+.donate-form-wrap h3{
+  font-family:'Orbitron',sans-serif;font-size:22px;color:var(--neon);
+  text-align:center;margin-bottom:28px;
+}
+.form-group{margin-bottom:18px;}
+.form-label{
+  display:block;font-size:12px;font-weight:700;color:var(--white2);
+  font-family:'Rajdhani',sans-serif;letter-spacing:1px;margin-bottom:7px;
+  text-transform:uppercase;
+}
+.form-input,.form-select,.form-textarea{
+  width:100%;padding:11px 16px;border-radius:10px;
+  background:rgba(0,30,80,0.4);border:1px solid rgba(0,200,255,0.2);
+  color:var(--white);font-family:'Exo 2',sans-serif;font-size:14px;
+  outline:none;transition:.2s;
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus{
+  border-color:var(--neon);box-shadow:0 0 12px rgba(0,200,255,0.2);
+}
+.form-select option{background:var(--darker);}
+.form-textarea{height:90px;resize:vertical;}
+.payment-methods{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:16px 0;}
+.payment-btn{
+  padding:10px 6px;border-radius:10px;text-align:center;
+  background:rgba(0,30,80,0.3);border:1.5px solid rgba(0,200,255,0.15);
+  cursor:pointer;transition:.3s;font-size:11px;font-weight:700;
+  font-family:'Rajdhani',sans-serif;color:var(--gray);
+}
+.payment-btn.active,.payment-btn:hover{
+  border-color:var(--neon);color:var(--neon);background:rgba(0,200,255,0.08);
+}
+.payment-btn .pay-icon{font-size:20px;margin-bottom:4px;display:block;}
+.btn-submit{
+  width:100%;padding:14px;border-radius:14px;
+  background:linear-gradient(90deg,var(--blue),var(--neon));
+  border:none;color:#fff;font-size:15px;font-weight:800;
+  font-family:'Rajdhani',sans-serif;letter-spacing:2px;cursor:pointer;
+  transition:.3s;text-transform:uppercase;margin-top:8px;
+}
+.btn-submit:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,200,255,0.4);}
+
+/* ===== REGISTRATION MODAL ===== */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.85);
+  backdrop-filter:blur(8px);z-index:2000;
+  display:flex;align-items:flex-start;justify-content:center;
+  padding:20px;overflow-y:auto;opacity:0;pointer-events:none;transition:.3s;
+}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal-box{
+  background:var(--darker);border:var(--border);border-radius:20px;
+  padding:36px;max-width:700px;width:100%;margin:auto;
+  box-shadow:0 0 80px rgba(0,87,255,0.3);
+  transform:translateY(30px);transition:.3s;
+}
+.modal-overlay.open .modal-box{transform:translateY(0);}
+.modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;}
+.modal-title{
+  font-family:'Orbitron',sans-serif;font-size:20px;
+  background:linear-gradient(90deg,var(--neon),var(--blue));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+}
+.modal-close{
+  width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.1);
+  border:none;color:var(--white);cursor:pointer;font-size:16px;
+  display:flex;align-items:center;justify-content:center;transition:.2s;
+}
+.modal-close:hover{background:rgba(255,0,0,0.3);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+.phone-row{display:flex;gap:8px;}
+.country-select{
+  flex-shrink:0;padding:11px 10px;border-radius:10px;
+  background:rgba(0,30,80,0.4);border:1px solid rgba(0,200,255,0.2);
+  color:var(--white);font-size:13px;outline:none;transition:.2s;
+}
+.country-select:focus{border-color:var(--neon);}
+.spouse-section{display:none;}
+.spouse-section.visible{display:block;}
+
+/* ===== ATTENDANCE ===== */
+.attendance-wrap{
+  background:var(--card-bg);border:var(--border);border-radius:18px;padding:28px;
+  max-width:600px;margin:0 auto;
+}
+.attendance-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:20px;}
+.att-day{
+  aspect-ratio:1;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;font-family:'Rajdhani',sans-serif;
+  cursor:pointer;border:1px solid rgba(0,200,255,0.15);
+  background:rgba(0,30,80,0.3);color:var(--gray);transition:.2s;
+}
+.att-day.present{background:rgba(0,255,100,0.2);border-color:#0f4;color:#0f4;}
+.att-day.absent{background:rgba(255,50,50,0.15);border-color:#f44;color:#f55;}
+.att-day:hover{border-color:var(--neon);color:var(--neon);}
+
+/* ===== RESEARCH SECTION ===== */
+.research-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;}
+.research-card{
+  background:var(--card-bg);border:var(--border);border-radius:16px;padding:24px;
+  transition:.3s;transform-style:preserve-3d;
+}
+.research-card:hover{
+  transform:translateY(-6px) rotateX(3deg);
+  box-shadow:0 16px 48px rgba(0,87,255,0.25);
+}
+.research-tag{
+  display:inline-block;padding:3px 12px;border-radius:10px;
+  background:rgba(0,200,255,0.1);color:var(--neon);font-size:11px;
+  font-family:'Rajdhani',sans-serif;letter-spacing:2px;margin-bottom:14px;
+}
+.research-card h4{font-size:16px;font-weight:700;color:var(--white);margin-bottom:10px;font-family:'Rajdhani',sans-serif;}
+.research-card p{font-size:13px;color:var(--gray);line-height:1.7;}
+
+/* ===== FOOTER ===== */
+footer{
+  background:rgba(2,6,18,0.98);border-top:1px solid rgba(0,200,255,0.15);
+  padding:48px 0 24px;
+}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+.footer-logo-text{font-family:'Orbitron',sans-serif;font-size:18px;font-weight:900;
+  background:linear-gradient(90deg,var(--neon),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:12px;}
+.footer-desc{color:var(--gray);font-size:13px;line-height:1.8;margin-bottom:20px;}
+.footer-socials{display:flex;gap:10px;}
+.social-btn{
+  width:36px;height:36px;border-radius:50%;border:var(--border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--neon);font-size:14px;transition:.3s;text-decoration:none;
+}
+.social-btn:hover{background:var(--blue);border-color:var(--blue);box-shadow:var(--glow);}
+.footer-col h4{
+  font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:700;
+  color:var(--white);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;
+}
+.footer-col a{display:block;color:var(--gray);font-size:13px;text-decoration:none;margin-bottom:8px;transition:.2s;}
+.footer-col a:hover{color:var(--neon);}
+.footer-contact-info{display:flex;flex-direction:column;gap:10px;}
+.footer-ci{display:flex;align-items:flex-start;gap:10px;}
+.footer-ci-icon{color:var(--neon);font-size:13px;margin-top:2px;flex-shrink:0;}
+.footer-ci-text{font-size:12px;color:var(--gray);line-height:1.5;}
+.footer-bottom{
+  border-top:1px solid rgba(0,200,255,0.1);padding-top:24px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+}
+.footer-bottom p{font-size:12px;color:var(--gray);}
+.footer-neon-line{
+  height:2px;background:linear-gradient(90deg,transparent,var(--neon),var(--blue),transparent);
+  margin-bottom:40px;opacity:.4;
+}
+
+/* ===== GLOW DIVIDER ===== */
+.glow-divider{
+  height:1px;background:linear-gradient(90deg,transparent,var(--neon),transparent);
+  margin:0;opacity:.3;
+}
+
+/* ===== FLOATING UP BUTTON ===== */
+.float-up{
+  position:fixed;bottom:28px;right:28px;z-index:900;
+  width:50px;height:50px;border-radius:50%;
+  background:linear-gradient(135deg,var(--blue),var(--neon));
+  border:none;color:#fff;font-size:20px;cursor:pointer;
+  box-shadow:var(--glow);transition:.3s;
+  display:flex;align-items:center;justify-content:center;
+  transform-style:preserve-3d;
+}
+.float-up:hover{transform:translateY(-4px) rotateX(20deg);box-shadow:var(--glow2);}
+.float-up:active{transform:translateY(2px) rotateX(-10deg);}
+
+/* ===== SEARCH RESULTS ===== */
+.search-results-panel{
+  position:absolute;top:100%;left:0;right:0;
+  background:rgba(5,12,35,0.97);border:var(--border);
+  border-radius:0 0 12px 12px;max-height:300px;overflow-y:auto;
+  display:none;z-index:100;
+}
+.search-results-panel.open{display:block;}
+.search-result-item{
+  padding:10px 16px;cursor:pointer;border-bottom:1px solid rgba(0,200,255,0.07);
+  font-size:13px;color:var(--white2);transition:.15s;
+}
+.search-result-item:hover{background:rgba(0,87,255,0.15);color:var(--neon);}
+
+/* ===== LOGIN MODAL ===== */
+.login-tabs{display:flex;gap:0;margin-bottom:28px;border-radius:12px;overflow:hidden;border:var(--border);}
+.login-tab{
+  flex:1;padding:11px;text-align:center;cursor:pointer;
+  font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;color:var(--gray);
+  background:rgba(0,30,80,0.3);transition:.2s;
+}
+.login-tab.active{background:var(--blue);color:#fff;}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .about-grid,.contact-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .form-row,.form-row-3{grid-template-columns:1fr;}
+  .payment-methods{grid-template-columns:repeat(3,1fr);}
+}
+@media(max-width:600px){
+  .header-top{padding:8px 12px;}
+  .logo-text h1{font-size:13px;}
+  .top-btns .btn-neon,.top-btns .btn-solid{padding:6px 10px;font-size:11px;}
+  .search-bar{max-width:160px;}
+  .footer-grid{grid-template-columns:1fr;}
+  .payment-methods{grid-template-columns:repeat(2,1fr);}
+  .attendance-grid{grid-template-columns:repeat(5,1fr);}
+  nav{padding:0 8px;}
+  .nav-link{padding:8px 10px;font-size:12px;}
+}
+
+/* NEON ANIMATIONS */
+@keyframes neon-pulse{
+  0%,100%{text-shadow:0 0 8px var(--neon),0 0 16px var(--neon);}
+  50%{text-shadow:0 0 4px var(--neon);}
+}
+@keyframes border-glow{
+  0%,100%{box-shadow:0 0 8px rgba(0,200,255,0.4);}
+  50%{box-shadow:0 0 20px rgba(0,200,255,0.8);}
+}
+.neon-text{animation:neon-pulse 2.5s ease-in-out infinite;}
+
+/* Members table */
+.members-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;}
+.member-card{
+  background:var(--card-bg);border:var(--border);border-radius:14px;padding:18px;
+  text-align:center;transition:.3s;
+}
+.member-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,87,255,0.25);}
+.member-avatar{
+  width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--neon));
+  display:flex;align-items:center;justify-content:center;margin:0 auto 12px;
+  font-size:24px;color:#fff;
+}
+.member-name{font-size:14px;font-weight:700;color:var(--white);margin-bottom:4px;font-family:'Rajdhani',sans-serif;}
+.member-role{font-size:11px;color:var(--neon);letter-spacing:1px;}
+
+/* Suggestion Section */
+.suggestion-card{
+  background:var(--card-bg);border:var(--border);border-radius:18px;padding:24px;
+  transition:.3s;
+}
+.suggestion-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,87,255,0.2);}
+.suggestion-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
+.donate-quick-btn{
+  padding:8px 18px;border-radius:20px;font-size:12px;font-weight:700;
+  font-family:'Rajdhani',sans-serif;letter-spacing:1px;cursor:pointer;
+  border:1px solid var(--neon2);color:var(--neon2);background:transparent;
+  transition:.2s;margin-top:12px;
+}
+.donate-quick-btn:hover{background:var(--neon2);color:var(--black);}
+
+/* toast */
+.toast{
+  position:fixed;bottom:90px;right:28px;z-index:3000;
+  padding:12px 22px;border-radius:12px;font-size:13px;font-weight:700;
+  font-family:'Rajdhani',sans-serif;letter-spacing:1px;
+  background:linear-gradient(90deg,var(--blue),var(--neon));color:#fff;
+  box-shadow:0 4px 20px rgba(0,87,255,0.4);
+  transform:translateX(200px);transition:.4s;pointer-events:none;
+}
+.toast.show{transform:translateX(0);}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="header-top">
+    <a href="#" class="logo">
+      <div class="logo-icon">AD</div>
+      <div class="logo-text">
+        <h1>ADHASO</h1>
+        <span>Alor Dhara Society</span>
+      </div>
+    </a>
+    <div class="search-bar" style="position:relative;">
+      <i class="fas fa-search" style="color:var(--gray);font-size:13px;flex-shrink:0;"></i>
+      <input type="text" id="searchInput" placeholder="Search projects, members..." autocomplete="off">
+      <button class="search-btn" id="searchBtn" onclick="doSearch()"><i class="fas fa-arrow-right"></i></button>
+      <div class="search-results-panel" id="searchPanel"></div>
+    </div>
+    <div class="top-btns">
+      <button class="btn-neon" onclick="openModal('loginModal')"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+      <button class="btn-solid" onclick="openModal('regModal')"><i class="fas fa-user-plus"></i> Register</button>
+      <button class="btn-donate" onclick="openModal('donateModal')"><i class="fas fa-heart"></i> Donate Us</button>
+    </div>
+  </div>
+  <nav>
+    <div class="nav-item">
+      <button class="nav-link" onclick="scrollTo('about')">About</button>
+    </div>
+    <div class="nav-item">
+      <button class="nav-link">Members <i class="fas fa-chevron-down"></i></button>
+      <div class="dropdown">
+        <a href="#">Board of Trustees</a>
+        <div class="sub-item">
+          <div class="sub-trigger">Executives <i class="fas fa-chevron-right"></i></div>
+          <div class="sub-dropdown">
+            <a href="#">Executives</a>
+            <a href="#">Sub-Executives</a>
+          </div>
+        </div>
+        <div class="sub-item">
+          <div class="sub-trigger">Volunteers <i class="fas fa-chevron-right"></i></div>
+          <div class="sub-dropdown">
+            <a href="#">General Volunteers</a>
+            <a href="#">Supportive Volunteers</a>
+          </div>
+        </div>
+        <div class="sub-item">
+          <div class="sub-trigger">Members <i class="fas fa-chevron-right"></i></div>
+          <div class="sub-dropdown">
+            <a href="#">Special Members</a>
+            <a href="#">General Members</a>
+            <a href="#">Supportive Members</a>
+          </div>
+        </div>
+        <a href="#">Probashi Members</a>
+        <div class="sub-item">
+          <div class="sub-trigger">Star Members <i class="fas fa-chevron-right"></i></div>
+          <div class="sub-dropdown">
+            <a href="#"><i class="fas fa-gem" style="color:#e5e4e2;"></i> Platinum Member</a>
+            <a href="#"><i class="fas fa-circle" style="color:#ffd700;"></i> Gold Member</a>
+            <a href="#"><i class="fas fa-circle" style="color:#c0c0c0;"></i> Silver Member</a>
+            <a href="#"><i class="fas fa-circle" style="color:#cd7f32;"></i> Bronze Member</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-item">
+      <button class="nav-link">Projects <i class="fas fa-chevron-down"></i></button>
+      <div class="dropdown" style="min-width:160px;">
+        <div style="max-height:280px;overflow-y:auto;" id="yearDropdown"></div>
+      </div>
+    </div>
+    <div class="nav-item">
+      <button class="nav-link" onclick="scrollTo('contact')">Contact Us</button>
+    </div>
+    <div class="nav-item">
+      <button class="nav-link" onclick="scrollTo('research')">Research</button>
+    </div>
+    <div class="nav-item">
+      <button class="nav-link" onclick="scrollTo('media')">Media</button>
+    </div>
+    <div class="nav-item">
+      <button class="nav-link" onclick="openModal('attendanceModal')">Attendance</button>
+    </div>
+    <div class="nav-item">
+      <button class="nav-link" onclick="scrollTo('suggest')">Suggestions</button>
+    </div>
+  </nav>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ Est. 2013 — Mirpur, Dhaka</div>
+    <h2>Lighting the Path<br>for the Helpless</h2>
+    <p>Alor Dhara Society (ADHASO) is a non-profit organization dedicated to empowering underprivileged communities through education, healthcare, and sustainable development in Bangladesh.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-hero btn-hero-primary" onclick="openModal('donateModal')">Donate Now</a>
+      <a href="#" class="btn-hero btn-hero-secondary" onclick="scrollTo('about')">Learn More</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num" id="cnt1">0</div><div class="stat-label">Beneficiaries</div></div>
+      <div class="stat"><div class="stat-num" id="cnt2">0</div><div class="stat-label">Projects</div></div>
+      <div class="stat"><div class="stat-num" id="cnt3">0</div><div class="stat-label">Volunteers</div></div>
+      <div class="stat"><div class="stat-num" id="cnt4">0</div><div class="stat-label">Years Active</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ===== 3D SWIPER - RECENT PROJECTS ===== -->
+<section class="swiper-section" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Featured Projects</div>
+      <h2 class="section-title">Recent Initiatives</h2>
+      <p class="section-sub">Swipe through our active and recent projects making a difference.</p>
+    </div>
+    <div class="swiper-wrapper-3d">
+      <div class="swiper-track" id="swiperTrack"></div>
+    </div>
+    <div class="swiper-controls">
+      <button class="swiper-btn-3d" onclick="swipe(-1)"><i class="fas fa-chevron-left"></i></button>
+      <button class="swiper-btn-3d" onclick="swipe(1)"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap">
+        <div class="about-img-main">
+          <div class="about-glow-dot" style="top:-30px;left:-30px;"></div>
+          <i class="fas fa-hands-helping" style="position:relative;z-index:1;"></i>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-tag">Our Story</div>
+        <h3>Who We Are</h3>
+        <p>Alor Dhara Society (ADHASO) was founded in 2013 in Mirpur, Dhaka with a vision to be a beacon of light — "Alor Dhara" — for people living in poverty and marginalization across Bangladesh.</p>
+        <p>We believe in community-driven change. Our programs span food security, primary education, skill development, disaster relief, and healthcare outreach. Over 13 years, we've reached thousands of lives.</p>
+        <div class="about-features">
+          <div class="feature-item"><i class="fas fa-graduation-cap feature-icon"></i><div class="feature-text">Education Programs</div></div>
+          <div class="feature-item"><i class="fas fa-heartbeat feature-icon"></i><div class="feature-text">Health Camps</div></div>
+          <div class="feature-item"><i class="fas fa-seedling feature-icon"></i><div class="feature-text">Livelihood Support</div></div>
+          <div class="feature-item"><i class="fas fa-home feature-icon"></i><div class="feature-text">Shelter Projects</div></div>
+          <div class="feature-item"><i class="fas fa-utensils feature-icon"></i><div class="feature-text">Food Distribution</div></div>
+          <div class="feature-item"><i class="fas fa-book feature-icon"></i><div class="feature-text">Research & Policy</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ===== PROJECTS BY YEAR ===== -->
+<section class="projects-section" id="all-projects">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Our Work</div>
+      <h2 class="section-title">Projects Timeline</h2>
+      <p class="section-sub">Browse projects from 2013 to 2026</p>
+    </div>
+    <div class="year-filter" id="yearFilter"></div>
+    <div id="projectDisplay"></div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ===== MEMBERS ===== -->
+<section id="members">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Our Team</div>
+      <h2 class="section-title">Board & Members</h2>
+    </div>
+    <div class="members-grid" id="membersGrid"></div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ===== SUGGESTION / DONATE PROJECTS ===== -->
+<section id="suggest">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Support Us</div>
+      <h2 class="section-title">Donate to Projects</h2>
+      <p class="section-sub">Choose a recent project and contribute directly. No account needed.</p>
+    </div>
+    <div class="suggestion-grid" id="suggestionGrid"></div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ===== MEDIA ===== -->
+<section id="media">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Gallery</div>
+      <h2 class="section-title">Media & Gallery</h2>
+    </div>
+    <div class="media-tabs">
+      <button class="media-tab active" onclick="switchMedia('online')">Online</button>
+      <button class="media-tab" onclick="switchMedia('offline')">Offline Events</button>
+      <button class="media-tab" onclick="switchMedia('youtube')"><i class="fab fa-youtube"></i> YouTube</button>
+    </div>
+    <div class="media-grid" id="mediaGrid"></div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ===== RESEARCH ===== -->
+<section id="research">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Knowledge</div>
+      <h2 class="section-title">Research & Reports</h2>
+      <p class="section-sub">Evidence-based insights driving our community programs.</p>
+    </div>
+    <div class="research-cards">
+      <div class="research-card">
+        <div class="research-tag">EDUCATION</div>
+        <h4>Primary School Dropout Rates in Urban Slums</h4>
+        <p>A 2024 study mapping dropout patterns across 12 Dhaka slums, identifying key intervention points for ADHASO programs.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-tag">HEALTH</div>
+        <h4>Malnutrition Index Among Under-5 Children</h4>
+        <p>Our field research reveals a 34% malnutrition prevalence, informing our Nutrition First initiative launched in 2023.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-tag">LIVELIHOOD</div>
+        <h4>Women's Micro-Enterprise Success Metrics</h4>
+        <p>Tracking 500 microfinance beneficiaries over 3 years — 78% showed income improvement after ADHASO's skill training.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-tag">CLIMATE</div>
+        <h4>Flood Resilience in Char Communities</h4>
+        <p>Research on adaptive strategies employed by riverine communities, guiding our disaster preparedness programs since 2021.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-tag">POLICY</div>
+        <h4>NGO Efficiency in Last-Mile Delivery</h4>
+        <p>A comparative study of delivery models showing community-led approaches outperform top-down distribution by 42%.</p>
+      </div>
+      <div class="research-card">
+        <div class="research-tag">SOCIAL</div>
+        <h4>Impact of Child Marriage on Education</h4>
+        <p>Comprehensive data from Dhaka and surrounding areas feeding into ADHASO's awareness campaigns and legal aid support.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Get in Touch</div>
+      <h2 class="section-title">Contact Us</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-card">
+        <h3><i class="fas fa-map-marker-alt"></i> Find Us</h3>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-map-pin"></i></div>
+          <div class="contact-detail"><h4>Address</h4><p>60 Feet Road, Mirpur-2<br>Dhaka - 1216, Bangladesh</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-phone"></i></div>
+          <div class="contact-detail"><h4>Phone</h4><p>+880 1700-000000<br>+880 1800-000000</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div class="contact-detail"><h4>Email</h4><p>info@adhaso.org<br>support@adhaso.org</p></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-clock"></i></div>
+          <div class="contact-detail"><h4>Office Hours</h4><p>Sat–Thu: 9:00 AM – 6:00 PM<br>Friday: Closed</p></div>
+        </div>
+        <a href="https://maps.google.com/?q=60+Feet+Road,Mirpur+2,Dhaka+1216" target="_blank" class="map-btn">
+          <i class="fas fa-map"></i> View on Google Maps — Mirpur-2, Dhaka 1216
+        </a>
+      </div>
+      <div>
+        <div class="donate-form-wrap" style="margin:0;">
+          <h3><i class="fas fa-paper-plane"></i> Send Message</h3>
+          <div class="form-group">
+            <label class="form-label">Your Name</label>
+            <input class="form-input" type="text" placeholder="Full Name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input class="form-input" type="email" placeholder="your@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" placeholder="Your message..."></textarea>
+          </div>
+          <button class="btn-submit" onclick="showToast('Message sent! We will reply soon.')">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-divider"></div>
+
+<!-- ===== DONATE SECTION ===== -->
+<section class="donate-section" id="donate">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Make a Difference</div>
+      <h2 class="section-title">Donate Now</h2>
+      <p class="section-sub">Every taka counts. No login required — donate anonymously or with your name.</p>
+    </div>
+    <div class="donate-form-wrap">
+      <h3><i class="fas fa-heart"></i> Donation Form</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Your Name (Optional)</label>
+          <input class="form-input" type="text" placeholder="Anonymous">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input class="form-input" type="tel" placeholder="+880...">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Select Project</label>
+        <select class="form-select" id="donateProject"></select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message (Optional)</label>
+        <textarea class="form-textarea" placeholder="Any special message or instructions..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Payment Method</label>
+        <div class="payment-methods">
+          <div class="payment-btn active" onclick="selectPay(this)"><span class="pay-icon">💙</span>bKash</div>
+          <div class="payment-btn" onclick="selectPay(this)"><span class="pay-icon">🟣</span>Rocket</div>
+          <div class="payment-btn" onclick="selectPay(this)"><span class="pay-icon">💳</span>Mastercard</div>
+          <div class="payment-btn" onclick="selectPay(this)"><span class="pay-icon">💳</span>Visa</div>
+          <div class="payment-btn" onclick="selectPay(this)"><span class="pay-icon">🏦</span>Bank</div>
+        </div>
+      </div>
+      <button class="btn-submit" onclick="showToast('Donation submitted! Thank you for your support! 💙')">
+        <i class="fas fa-heart"></i> Send Donation
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-neon-line"></div>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-text">ADHASO</div>
+        <p class="footer-desc">Alor Dhara Society — lighting paths for the underprivileged since 2013. Together we build a Bangladesh where no one is left behind.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-btn"><i class="fas fa-globe"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <a href="#about">About Us</a>
+        <a href="#all-projects">Projects</a>
+        <a href="#research">Research</a>
+        <a href="#media">Media</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Get Involved</h4>
+        <a href="#" onclick="openModal('regModal')">Become a Member</a>
+        <a href="#suggest">Donate</a>
+        <a href="#">Volunteer</a>
+        <a href="#">Partner With Us</a>
+        <a href="#">Internship</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Info</h4>
+        <div class="footer-contact-info">
+          <div class="footer-ci"><i class="fas fa-map-marker-alt footer-ci-icon"></i><div class="footer-ci-text">60 Feet Road, Mirpur-2, Dhaka 1216</div></div>
+          <div class="footer-ci"><i class="fas fa-phone footer-ci-icon"></i><div class="footer-ci-text">+880 1700-000000</div></div>
+          <div class="footer-ci"><i class="fas fa-envelope footer-ci-icon"></i><div class="footer-ci-text">info@adhaso.org</div></div>
+          <div class="footer-ci"><i class="fas fa-clock footer-ci-icon"></i><div class="footer-ci-text">Sat–Thu: 9AM–6PM</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Alor Dhara Society (ADHASO). All Rights Reserved.</p>
+      <p style="color:var(--neon);font-size:11px;">60 Feet Road, Mirpur-2, Dhaka 1216 | Est. 2013</p>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING BACK TO TOP -->
+<button class="float-up" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to Top">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<div class="toast" id="toast"></div>
+
+<!-- ===== REGISTRATION MODAL ===== -->
+<div class="modal-overlay" id="regModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title"><i class="fas fa-user-plus"></i> Member Registration</div>
+      <button class="modal-close" onclick="closeModal('regModal')">✕</button>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Full Name *</label><input class="form-input" type="text" placeholder="Your full name" id="reg_name"></div>
+      <div class="form-group"><label class="form-label">Email *</label><input class="form-input" type="email" placeholder="your@email.com" id="reg_email"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Phone 1 *</label>
+        <div class="phone-row">
+          <select class="country-select"><option value="+880">🇧🇩 +880</option><option value="+1">🇺🇸 +1</option><option value="+44">🇬🇧 +44</option><option value="+91">🇮🇳 +91</option><option value="+966">🇸🇦 +966</option><option value="+971">🇦🇪 +971</option><option value="+60">🇲🇾 +60</option><option value="+65">🇸🇬 +65</option></select>
+          <input class="form-input" type="tel" placeholder="Phone number">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone 2</label>
+        <div class="phone-row">
+          <select class="country-select"><option value="+880">🇧🇩 +880</option><option value="+1">🇺🇸 +1</option><option value="+44">🇬🇧 +44</option><option value="+91">🇮🇳 +91</option><option value="+966">🇸🇦 +966</option><option value="+971">🇦🇪 +971</option></select>
+          <input class="form-input" type="tel" placeholder="Phone number">
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Nationality</label><input class="form-input" type="text" placeholder="e.g. Bangladeshi"></div>
+      <div class="form-group"><label class="form-label">Gender</label>
+        <select class="form-select"><option value="">Select Gender</option><option>Male</option><option>Female</option><option>Other</option></select>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Father's Name</label><input class="form-input" type="text" placeholder="Father's full name"></div>
+      <div class="form-group"><label class="form-label">Mother's Name</label><input class="form-input" type="text" placeholder="Mother's full name"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Marital Status</label>
+        <select class="form-select" onchange="toggleSpouse(this)"><option value="no">Single</option><option value="yes">Married</option></select>
+      </div>
+      <div class="form-group spouse-section" id="spouseField"><label class="form-label">Spouse's Name</label><input class="form-input" type="text" placeholder="Spouse's full name"></div>
+    </div>
+    <div class="form-row-3">
+      <div class="form-group"><label class="form-label">School Name</label><input class="form-input" type="text" placeholder="School"></div>
+      <div class="form-group"><label class="form-label">College Name</label><input class="form-input" type="text" placeholder="College"></div>
+      <div class="form-group"><label class="form-label">University Name</label><input class="form-input" type="text" placeholder="University"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Occupation</label><input class="form-input" type="text" placeholder="Your occupation"></div>
+      <div class="form-group"><label class="form-label">Member Type</label>
+        <select class="form-select"><option>General Member</option><option>Special Member</option><option>Volunteer</option><option>Probashi Member</option></select>
+      </div>
+    </div>
+    <button class="btn-submit" onclick="submitReg()"><i class="fas fa-check-circle"></i> Submit Registration</button>
+  </div>
+</div>
+
+<!-- ===== LOGIN MODAL ===== -->
+<div class="modal-overlay" id="loginModal">
+  <div class="modal-box" style="max-width:440px;">
+    <div class="modal-header">
+      <div class="modal-title"><i class="fas fa-sign-in-alt"></i> Account Access</div>
+      <button class="modal-close" onclick="closeModal('loginModal')">✕</button>
+    </div>
+    <div class="login-tabs">
+      <div class="login-tab active" onclick="switchLoginTab('login',this)">Sign In</div>
+      <div class="login-tab" onclick="switchLoginTab('signup',this)">Sign Up</div>
+    </div>
+    <div id="loginForm">
+      <div class="form-group"><label class="form-label">Email / Phone</label><input class="form-input" type="text" placeholder="Email or phone number"></div>
+      <div class="form-group"><label class="form-label">Password</label><input class="form-input" type="password" placeholder="••••••••"></div>
+      <p style="text-align:right;font-size:12px;color:var(--neon);cursor:pointer;margin-bottom:16px;">Forgot password?</p>
+      <button class="btn-submit" onclick="showToast('Signed in successfully! Welcome back.')">Sign In</button>
+    </div>
+    <div id="signupForm" style="display:none;">
+      <div class="form-row">
+        <div class="form-group"><label class="form-label">Full Name</label><input class="form-input" type="text" placeholder="Your name"></div>
+        <div class="form-group"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="Email"></div>
+      </div>
+      <div class="form-group"><label class="form-label">Password</label><input class="form-input" type="password" placeholder="Create password"></div>
+      <div class="form-group"><label class="form-label">Confirm Password</label><input class="form-input" type="password" placeholder="Repeat password"></div>
+      <button class="btn-submit" onclick="closeModal('loginModal');openModal('regModal')">Continue to Registration</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== DONATE MODAL ===== -->
+<div class="modal-overlay" id="donateModal">
+  <div class="modal-box" style="max-width:520px;">
+    <div class="modal-header">
+      <div class="modal-title"><i class="fas fa-heart"></i> Quick Donate</div>
+      <button class="modal-close" onclick="closeModal('donateModal')">✕</button>
+    </div>
+    <div class="form-group"><label class="form-label">Your Name (Optional)</label><input class="form-input" type="text" placeholder="Anonymous"></div>
+    <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" type="tel" placeholder="+880..."></div>
+    <div class="form-group"><label class="form-label">Select Project</label><select class="form-select" id="modalDonateProject"></select></div>
+    <div class="form-group"><label class="form-label">Amount (BDT)</label><input class="form-input" type="number" placeholder="Enter amount"></div>
+    <div class="form-group"><label class="form-label">Payment Method</label>
+      <div class="payment-methods">
+        <div class="payment-btn active" onclick="selectPay(this)"><span class="pay-icon">💙</span>bKash</div>
+        <div class="payment-btn" onclick="selectPay(this)"><span class="pay-icon">🟣</span>Rocket</div>
+        <div class="payment-btn" onclick="selectPay(this)"><span class="pay-icon">💳</span>Mastercard</div>
+        <div class="payment-btn" onclick="selectPay(this)"><span class="pay-icon">💳</span>Visa</div>
+        <div class="payment-btn" onclick="selectPay(this)"><span class="pay-icon">🏦</span>Bank</div>
+      </div>
+    </div>
+    <button class="btn-submit" onclick="showToast('Donation submitted! JazakAllahu Khairan! 💙');closeModal('donateModal')"><i class="fas fa-heart"></i> Send Donation</button>
+  </div>
+</div>
+
+<!-- ===== ATTENDANCE MODAL ===== -->
+<div class="modal-overlay" id="attendanceModal">
+  <div class="modal-box" style="max-width:540px;">
+    <div class="modal-header">
+      <div class="modal-title"><i class="fas fa-clipboard-list"></i> Executive Attendance</div>
+      <button class="modal-close" onclick="closeModal('attendanceModal')">✕</button>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label class="form-label">Executive Name</label>
+        <select class="form-select">
+          <option>Select Executive...</option>
+          <option>Ahmed Khan — President</option>
+          <option>Fatema Begum — VP</option>
+          <option>Rashid Hossain — Secretary</option>
+          <option>Nusrat Jahan — Treasurer</option>
+          <option>Karim Ahmed — Director</option>
+        </select>
+      </div>
+      <div class="form-group"><label class="form-label">Month</label>
+        <select class="form-select" id="attMonth"></select>
+      </div>
+    </div>
+    <div class="attendance-wrap" style="padding:0;background:transparent;border:none;">
+      <p style="font-size:12px;color:var(--gray);margin-bottom:12px;">Click dates to toggle attendance (🟢 Present / 🔴 Absent)</p>
+      <div class="attendance-grid" id="attGrid"></div>
+    </div>
+    <div style="display:flex;gap:16px;margin-top:20px;align-items:center;">
+      <span style="font-size:12px;color:var(--gray);">
+        Present: <span id="presentCount" style="color:#0f4;font-weight:700;">0</span> |
+        Absent: <span id="absentCount" style="color:#f55;font-weight:700;">0</span>
+      </span>
+      <button class="btn-submit" style="flex:1;margin:0;" onclick="showToast('Attendance saved successfully!')">Save Attendance</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ===== DATA =====
+const projects = [
+  {year:2013,title:"Clean Water Initiative",desc:"Installing tube wells in 5 slum areas of Mirpur.",icon:"💧",type:"Infrastructure"},
+  {year:2014,title:"Free School Program",desc:"Opening 3 non-formal schools for street children.",icon:"📚",type:"Education"},
+  {year:2015,title:"Winter Blanket Drive",desc:"Distributing 2000+ blankets to homeless families.",icon:"🧣",type:"Relief"},
+  {year:2016,title:"Women Skill Training",desc:"Sewing and handicraft training for 150 women.",icon:"🧵",type:"Livelihood"},
+  {year:2017,title:"Health Camp Series",desc:"Free medical checkup for 3000+ underprivileged.",icon:"🏥",type:"Healthcare"},
+  {year:2018,title:"Flood Relief Sylhet",desc:"Emergency food & shelter for 500 flood victims.",icon:"🌊",type:"Disaster Relief"},
+  {year:2019,title:"School Bag Program",desc:"Providing school bags & stationery to 1000 kids.",icon:"🎒",type:"Education"},
+  {year:2020,title:"COVID Relief Fund",desc:"Food packages & masks for 2000 families during lockdown.",icon:"😷",type:"Emergency"},
+  {year:2021,title:"Vaccine Awareness Drive",desc:"Community outreach ensuring 80% vaccination coverage.",icon:"💉",type:"Health"},
+  {year:2022,title:"Tree Plantation 1000+",desc:"Planting 1200 trees in Mirpur and surrounding areas.",icon:"🌳",type:"Environment"},
+  {year:2023,title:"Nutrition First",desc:"Monthly nutrition packs for 300 malnourished children.",icon:"🥗",type:"Nutrition"},
+  {year:2024,title:"Digital Literacy Hub",desc:"Computer training center serving 200+ youth monthly.",icon:"💻",type:"Education"},
+  {year:2025,title:"Solar Light Villages",desc:"Bringing solar power to 50 off-grid rural homes.",icon:"☀️",type:"Energy"},
+  {year:2026,title:"Artisan Market ADHASO",desc:"Online marketplace for disadvantaged artisans & craftspeople.",icon:"🎨",type:"Commerce"},
+];
+
+const members = [
+  {name:"Ahmed Rahman",role:"President",icon:"👑"},
+  {name:"Fatema Begum",role:"Vice President",icon:"⭐"},
+  {name:"Rashid Hossain",role:"Secretary General",icon:"📋"},
+  {name:"Nusrat Jahan",role:"Treasurer",icon:"💎"},
+  {name:"Karim Ahmed",role:"Director",icon:"🎯"},
+  {name:"Sumaiya Akter",role:"Volunteer Lead",icon:"🤝"},
+  {name:"Mizanur Rahman",role:"General Member",icon:"👤"},
+  {name:"Roksana Islam",role:"Special Member",icon:"🌟"},
+];
+
+// ===== INIT YEAR DROPDOWN =====
+const yearDropdown = document.getElementById('yearDropdown');
+for(let y=2026;y>=2013;y--){
+  const a = document.createElement('a');
+  a.href='#all-projects';
+  a.textContent=y;
+  a.onclick=()=>filterYear(y);
+  yearDropdown.appendChild(a);
+}
+
+// ===== YEAR FILTER =====
+const yearFilter = document.getElementById('yearFilter');
+for(let y=2013;y<=2026;y++){
+  const b=document.createElement('button');
+  b.className='year-btn';b.textContent=y;
+  b.onclick=()=>filterYear(y,b);
+  yearFilter.appendChild(b);
+}
+let activeYear=2026;
+function filterYear(y,btn){
+  activeYear=y;
+  document.querySelectorAll('.year-btn').forEach(b=>b.classList.remove('active'));
+  if(btn)btn.classList.add('active');
+  const p=projects.find(pr=>pr.year===y);
+  const pd=document.getElementById('projectDisplay');
+  if(!p){pd.innerHTML='<p style="color:var(--gray);text-align:center;padding:40px;">No projects recorded for this year.</p>';return;}
+  pd.innerHTML=`
+    <div class="project-detail">
+      <div class="project-detail-img">${p.icon}</div>
+      <h3 style="font-family:'Rajdhani',sans-serif;font-size:22px;color:var(--neon);margin-bottom:8px;">${p.title}</h3>
+      <p style="color:var(--gray);margin-bottom:20px;line-height:1.7;">${p.desc} This initiative was part of ADHASO's ${y} annual plan targeting vulnerable communities in the Dhaka metropolitan area, focusing on sustainable impact and community participation.</p>
+      <table class="project-table">
+        <thead><tr><th>Category</th><th>Details</th></tr></thead>
+        <tbody>
+          <tr><td>Year</td><td>${y}</td></tr>
+          <tr><td>Project Type</td><td>${p.type}</td></tr>
+          <tr><td>Status</td><td style="color:${y<=2025?'#0f4':'var(--neon)'};">${y<=2025?'✔ Completed':'🔄 In Progress'}</td></tr>
+          <tr><td>Location</td><td>Mirpur, Dhaka & Surrounding Areas</td></tr>
+          <tr><td>Beneficiaries</td><td>${Math.floor(Math.random()*2000+500)+ '+ People'}</td></tr>
+          <tr><td>Budget</td><td>৳ ${(Math.random()*5+1).toFixed(1)} Lakh</td></tr>
+        </tbody>
+      </table>
+    </div>`;
+}
+// init
+document.querySelectorAll('.year-btn').forEach(b=>{if(b.textContent=='2026'){b.classList.add('active');}});
+filterYear(2026);
+
+// ===== 3D SWIPER =====
+let swiperIdx=0;
+const track=document.getElementById('swiperTrack');
+projects.slice(-6).forEach((p,i)=>{
+  const card=document.createElement('div');
+  card.className='project-card-3d'+(i===2?' active':'');
+  card.innerHTML=`<div class="card-img-placeholder">${p.icon}</div>
+    <div class="card-body">
+      <div class="card-year">${p.year}</div>
+      <div class="card-title">${p.title}</div>
+      <div class="card-desc">${p.desc}</div>
+      <button class="card-btn" onclick="filterYear(${p.year})">View Details</button>
+    </div>`;
+  track.appendChild(card);
+});
+function swipe(dir){
+  const cards=track.querySelectorAll('.project-card-3d');
+  cards.forEach(c=>c.classList.remove('active'));
+  swiperIdx=(swiperIdx+dir+cards.length)%cards.length;
+  cards[swiperIdx].classList.add('active');
+  const offset=-(swiperIdx-2)*310;
+  track.style.transform=`translateX(${offset}px)`;
+}
+
+// ===== MEMBERS =====
+const mg=document.getElementById('membersGrid');
+members.forEach(m=>{
+  mg.innerHTML+=`<div class="member-card">
+    <div class="member-avatar">${m.icon}</div>
+    <div class="member-name">${m.name}</div>
+    <div class="member-role">${m.role}</div>
+  </div>`;
+});
+
+// ===== SUGGESTION GRID =====
+const sg=document.getElementById('suggestionGrid');
+projects.slice(-6).forEach(p=>{
+  sg.innerHTML+=`<div class="suggestion-card">
+    <div style="font-size:36px;margin-bottom:12px;">${p.icon}</div>
+    <div style="font-size:11px;color:var(--neon);letter-spacing:2px;font-family:'Rajdhani',sans-serif;margin-bottom:8px;">${p.year} · ${p.type}</div>
+    <h4 style="font-size:16px;font-weight:700;color:var(--white);margin-bottom:8px;font-family:'Rajdhani',sans-serif;">${p.title}</h4>
+    <p style="font-size:13px;color:var(--gray);margin-bottom:14px;">${p.desc}</p>
+    <button class="donate-quick-btn" onclick="quickDonate('${p.title}')">Donate to This Project</button>
+  </div>`;
+});
+function quickDonate(title){
+  document.getElementById('modalDonateProject').value=title;
+  openModal('donateModal');
+}
+
+// ===== DONATE PROJECT SELECT =====
+const dp=document.getElementById('donateProject');
+const mdp=document.getElementById('modalDonateProject');
+projects.forEach(p=>{
+  dp.innerHTML+=`<option value="${p.title}">${p.year} — ${p.title}</option>`;
+  mdp.innerHTML+=`<option value="${p.title}">${p.year} — ${p.title}</option>`;
+});
+
+// ===== MEDIA =====
+const mediaData={
+  online:[
+    {title:"ADHASO Blood Donation 2025",type:"Photo",icon:"📸"},
+    {title:"Flood Victims Aid Live",type:"Live",icon:"📡"},
+    {title:"Annual Report 2024",type:"Document",icon:"📄"},
+  ],
+  offline:[
+    {title:"Eid Distribution Event",type:"Event",icon:"🎉"},
+    {title:"School Opening Ceremony",type:"Event",icon:"🎒"},
+    {title:"Health Camp Mirpur",type:"Photo",icon:"🏥"},
+  ],
+  youtube:[
+    {title:"ADHASO Documentary 2024",type:"YouTube",icon:"▶️"},
+    {title:"Volunteer Stories",type:"YouTube",icon:"▶️"},
+    {title:"Project Impact Report",type:"YouTube",icon:"▶️"},
+  ]
+};
+function switchMedia(tab){
+  document.querySelectorAll('.media-tab').forEach((t,i)=>{
+    t.classList.toggle('active',['online','offline','youtube'][i]===tab);
+  });
+  const mg2=document.getElementById('mediaGrid');
+  mg2.innerHTML='';
+  mediaData[tab].forEach(m=>{
+    mg2.innerHTML+=`<div class="media-card">
+      <div class="media-thumb">${m.icon}
+        <div class="media-play"><i class="fas fa-play-circle"></i></div>
+      </div>
+      <div class="media-info"><h4>${m.title}</h4><p>${m.type}</p></div>
+    </div>`;
+  });
+}
+switchMedia('online');
+
+// ===== PAYMENT =====
+function selectPay(el){
+  el.closest('.payment-methods').querySelectorAll('.payment-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ===== MODALS =====
+function openModal(id){document.getElementById(id).classList.add('open');}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+document.querySelectorAll('.modal-overlay').forEach(m=>{
+  m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');});
+});
+
+// ===== LOGIN TABS =====
+function switchLoginTab(tab,el){
+  document.querySelectorAll('.login-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('loginForm').style.display=tab==='login'?'block':'none';
+  document.getElementById('signupForm').style.display=tab==='signup'?'block':'none';
+}
+
+// ===== SPOUSE TOGGLE =====
+function toggleSpouse(sel){
+  document.getElementById('spouseField').classList.toggle('visible',sel.value==='yes');
+}
+
+// ===== REGISTRATION =====
+function submitReg(){
+  const name=document.getElementById('reg_name').value;
+  const email=document.getElementById('reg_email').value;
+  if(!name||!email){showToast('Please fill required fields!');return;}
+  showToast('Registration submitted! Welcome to ADHASO! 🎉');
+  closeModal('regModal');
+}
+
+// ===== TOAST =====
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+// ===== SEARCH =====
+const searchData=[
+  ...projects.map(p=>({text:`${p.year} — ${p.title}`,anchor:'#all-projects',year:p.year})),
+  {text:'About ADHASO',anchor:'#about'},{text:'Contact Us',anchor:'#contact'},
+  {text:'Research Papers',anchor:'#research'},{text:'Media Gallery',anchor:'#media'},
+  {text:'Donate Now',anchor:'#donate'},{text:'Members',anchor:'#members'},
+];
+const si=document.getElementById('searchInput');
+const sp=document.getElementById('searchPanel');
+si.addEventListener('input',()=>{
+  const q=si.value.toLowerCase().trim();
+  if(!q){sp.classList.remove('open');return;}
+  const res=searchData.filter(d=>d.text.toLowerCase().includes(q));
+  if(!res.length){sp.innerHTML='<div class="search-result-item" style="color:var(--gray);">No results found</div>';sp.classList.add('open');return;}
+  sp.innerHTML=res.slice(0,8).map(r=>`<div class="search-result-item" onclick="goSearch('${r.anchor}',${r.year||0})">${r.text}</div>`).join('');
+  sp.classList.add('open');
+});
+document.addEventListener('click',e=>{if(!e.target.closest('.search-bar'))sp.classList.remove('open');});
+function doSearch(){
+  const q=si.value.toLowerCase().trim();
+  const r=searchData.find(d=>d.text.toLowerCase().includes(q));
+  if(r)goSearch(r.anchor,r.year||0);
+  else showToast('No results for "'+si.value+'"');
+  sp.classList.remove('open');
+}
+function goSearch(anchor,year){
+  sp.classList.remove('open');
+  if(year)filterYear(year);
+  document.querySelector(anchor)?.scrollIntoView({behavior:'smooth'});
+}
+si.addEventListener('keydown',e=>{if(e.key==='Enter')doSearch();});
+
+// ===== SCROLL NAV =====
+function scrollTo(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth'});}
+
+// ===== PARTICLES =====
+const pContainer=document.getElementById('particles');
+for(let i=0;i<18;i++){
+  const p=document.createElement('div');p.className='particle';
+  const sz=Math.random()*3+1;
+  Object.assign(p.style,{
+    width:sz+'px',height:sz+'px',
+    left:Math.random()*100+'%',
+    animationDuration:(Math.random()*12+8)+'s',
+    animationDelay:(Math.random()*8)+'s',
+    opacity:Math.random()*0.5+0.1,
+    background:Math.random()>.5?'var(--neon)':'var(--blue)',
+  });
+  pContainer.appendChild(p);
+}
+
+// ===== COUNTERS =====
+function animateCount(el,target,suffix=''){
+  let c=0;const step=Math.ceil(target/60);
+  const t=setInterval(()=>{c=Math.min(c+step,target);el.textContent=c.toLocaleString()+suffix;if(c>=target)clearInterval(t);},25);
+}
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){
+    animateCount(document.getElementById('cnt1'),12000,'+');
+    animateCount(document.getElementById('cnt2'),87);
+    animateCount(document.getElementById('cnt3'),340,'+');
+    animateCount(document.getElementById('cnt4'),13);
+    io.disconnect();
+  }});
+},{threshold:.3});
+io.observe(document.getElementById('home'));
+
+// ===== ATTENDANCE =====
+const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const attMonth=document.getElementById('attMonth');
+months.forEach((m,i)=>{const o=document.createElement('option');o.value=i;o.textContent=m+' 2026';attMonth.appendChild(o);});
+attMonth.value=4;
+function buildAttGrid(){
+  const grid=document.getElementById('attGrid');grid.innerHTML='';
+  const days=31;let present=0,absent=0;
+  for(let i=1;i<=days;i++){
+    const d=document.createElement('div');d.className='att-day';d.textContent=i;
+    d.onclick=function(){
+      if(this.classList.contains('present')){this.classList.remove('present');this.classList.add('absent');}
+      else if(this.classList.contains('absent')){this.classList.remove('absent');}
+      else{this.classList.add('present');}
+      updateCounts();
+    };
+    grid.appendChild(d);
+  }
+}
+function updateCounts(){
+  document.getElementById('presentCount').textContent=document.querySelectorAll('#attGrid .att-day.present').length;
+  document.getElementById('absentCount').textContent=document.querySelectorAll('#attGrid .att-day.absent').length;
+}
+buildAttGrid();
+attMonth.addEventListener('change',buildAttGrid);
+</script>
+</body>
+</html>
